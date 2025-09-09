@@ -1,0 +1,307 @@
+/*
+ * Color Palette & Typography
+ *
+ * This new palette uses a sleek dark theme with bright blue accents.
+ * Fonts are selected for readability and a modern, technical feel.
+ */
+:root {
+    --primary-color: #007bff; /* Bright accent blue */
+    --secondary-color: #6c757d; /* Muted gray for text */
+    --bg-dark: #121212; /* Deep background black */
+    --bg-darker-card: #1e1e1e; /* Slightly lighter card background */
+    --bg-light-card: #f8f9fa; /* Light card background for contrast */
+    --text-light: #e0e0e0; /* Off-white text for dark backgrounds */
+    --text-dark: #212529; /* Dark text for light backgrounds */
+    --accent-blue: #004d99; /* Darker blue for hover effects */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden; /* Prevents horizontal scroll from animations */
+}
+
+/*
+ * Global Elements
+ *
+ * Styles for headings, buttons, and card components.
+ */
+h2, h3, h4 {
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn-outline-light {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.bg-darker-card {
+    background-color: var(--bg-darker-card);
+    color: var(--text-light);
+}
+
+.bg-light-card {
+    background-color: var(--bg-light-card);
+    color: var(--text-dark);
+}
+
+/*
+ * Navigation Bar
+ *
+ * A sleek, transparent, and sticky navbar.
+ */
+.navbar {
+    background-color: rgba(18, 18, 18, 0.6) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.4s ease;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/*
+ * Hero Section
+ *
+ * A dramatic intro with a dark overlay and parallax effect.
+ */
+#hero {
+    background: url('https://images.unsplash.com/photo-1550439062-609e17489dbf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Parallax effect */
+    position: relative;
+}
+
+#hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-image: radial-gradient(circle at 15% 50%, rgba(0, 123, 255, 0.1), transparent 50%),
+                      radial-gradient(circle at 85% 50%, rgba(200, 50, 255, 0.1), transparent 50%);
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+    z-index: 10;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+    animation: zoomIn 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.5rem;
+    position: relative;
+    display: inline-block;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hero-title::after {
+    content: '|';
+    animation: blink-caret .75s step-end infinite;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color) }
+}
+
+/*
+ * Sections
+ *
+ * Spacing and color for each portfolio section.
+ */
+section {
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+/*
+ * Experience Section Timeline
+ *
+ * Creates a clean timeline layout with dot and line styles.
+ */
+.timeline {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--secondary-color);
+    margin-left: -1px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -10px;
+    z-index: 2;
+    border: 3px solid var(--bg-dark);
+}
+
+.timeline-content {
+    margin-left: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 0;
+    margin-right: 55%;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: auto;
+    right: 50%;
+    margin-left: 0;
+    margin-right: -10px;
+}
+
+/*
+ * Badges for skills
+ */
+.badge {
+    padding: 0.5em 1em;
+    font-size: 0.85em;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.badge-info {
+    background-color: #e3f2fd !important;
+    color: var(--accent-blue) !important;
+}
+
+/*
+ * Responsive Design
+ */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+    .timeline-dot {
+        left: 20px;
+    }
+    .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 55px;
+        margin-right: 0;
+        text-align: left;
+    }
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 20px;
+        right: auto;
+    }
+}
